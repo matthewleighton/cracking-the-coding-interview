@@ -14,7 +14,7 @@ class LinkedList:
 
 		while current.next != None:
 			current = current.next
-			value_list.append(current.data)
+			value_list.append(str(current.data))
 
 		return ''.join(value_list)
 
