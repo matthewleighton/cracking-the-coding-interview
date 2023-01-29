@@ -4,9 +4,12 @@ class Node:
 		self.next = None
 
 class LinkedList:
-	def __init__(self):
+	def __init__(self, value_list=[]):
 		self.head = Node()
 		self.length = 0
+
+		for value in value_list:
+			self.append(value)
 
 	def __str__(self):
 		current = self.head

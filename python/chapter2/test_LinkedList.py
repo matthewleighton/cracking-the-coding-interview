@@ -115,6 +115,13 @@ class TestLinkedList(unittest.TestCase):
 		length = linked_list.length
 		self.assertEqual(length, 2)
 
+	def test_initialize_list_with_values(self):
+		linked_list = LinkedList([1, 2, 'a', 'b'])
+
+		self.assertEqual(str(linked_list), '12ab')
+
+
+
 
 if __name__ == '__main__':
 	unittest.main()
