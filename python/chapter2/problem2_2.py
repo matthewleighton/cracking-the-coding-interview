@@ -13,6 +13,8 @@ def get_kth_last_element_v1(linked_list, k):
 
 	return current
 
+#############################################################################################################
+
 # This version doesn't use the pre-known length.
 # Instead we use a recursive function.
 # This steps along to the end of the list,
@@ -50,3 +52,25 @@ def kth_last_recursive(current, k, backsteps=None):
 		return_element = passback_element
 
 	return backsteps, return_element
+
+#############################################################################################################
+
+# This version uses a runner which is positioned k elements ahead of the current node.
+# The runner and current then both walk to the end.
+# At this point, current will be positioned at our desired node, k steps from the end.
+def get_kth_last_element_v3(linked_list, k):
+	if k < 0:
+		raise ValueError(f'{k} is not a valid index.')
+
+	current, runner = linked_list.head.next, linked_list.head.next
+
+	for i in range(k):
+		if runner.next is None:
+			raise ValueError(f'{k} is not a valid index.')
+		runner = runner.next
+
+	while runner.next is not None:
+		current = current.next
+		runner = runner.next
+
+	return current

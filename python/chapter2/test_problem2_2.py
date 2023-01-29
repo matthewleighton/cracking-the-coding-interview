@@ -1,5 +1,5 @@
 import unittest
-from problem2_2 import get_kth_last_element_v1, get_kth_last_element_v2
+from problem2_2 import get_kth_last_element_v1, get_kth_last_element_v2, get_kth_last_element_v3
 from LinkedList import LinkedList
 
 class TestProblem2(unittest.TestCase):
@@ -90,6 +90,45 @@ class TestProblem2(unittest.TestCase):
 		k = -1
 
 		self.assertRaises(ValueError, get_kth_last_element_v2, linked_list, k)
+
+
+	# ---- Version 3 ----
+
+	def test_v3_returns_last_element_if_k_is_0(self):
+		linked_list = self.initialize_linked_list()
+		k = 0
+
+		target_element = get_kth_last_element_v3(linked_list, k)
+		
+		self.assertEqual(target_element.data, 'd')
+
+	def test_v3_returns_second_last_element_if_k_is_1(self):
+		linked_list = self.initialize_linked_list()
+		k = 1
+
+		target_element = get_kth_last_element_v3(linked_list, k)
+		
+		self.assertEqual(target_element.data, 'c')
+
+	def test_v3_returns_first_element_if_k_is_length_minus_1(self):
+		linked_list = self.initialize_linked_list()
+		k = 3
+
+		target_element = get_kth_last_element_v3(linked_list, k)
+		
+		self.assertEqual(target_element.data, 'a')
+
+	def test_v3_raises_value_error_if_k_is_length_or_greater(self):
+		linked_list = self.initialize_linked_list()
+		k = 4
+
+		self.assertRaises(ValueError, get_kth_last_element_v3, linked_list, k)
+
+	def test_v3_raises_value_error_if_k_is_less_than_zero(self):
+		linked_list = self.initialize_linked_list()
+		k = -1
+
+		self.assertRaises(ValueError, get_kth_last_element_v3, linked_list, k)
 
 
 
